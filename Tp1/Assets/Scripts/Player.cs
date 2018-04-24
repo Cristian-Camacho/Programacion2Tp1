@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : Character
 {
+
+    public Transform shootPoint;
+    public GameObject bulletPrefab;
+
 	private Ray _cameraRay;
 	private RaycastHit _hit;
 	// Use this for initialization
@@ -15,12 +19,14 @@ public class Player : Character
 	void Update () 
 	{
 		Movement();
+
+        if(Input.GetMouseButton(0))Shoot();
 	}
 
 	private void Movement() 
 	{
-		transform.position += transform.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-		transform.position += transform.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime;
+		transform.position += Vector3.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+		transform.position += Vector3.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime;
 		
 		if (Input.GetMouseButton(0)) 
 		{
@@ -33,4 +39,9 @@ public class Player : Character
 			}
 		}
 	}
+
+    private void Shoot()
+    {
+
+    }
 }

@@ -21,7 +21,7 @@ public class Character : MonoBehaviour , IDamaged
 		if (currentLife <= 0f)
 			Die();
 	}
-	public void Die() 
+	public virtual void Die() 
 	{
 
 	}

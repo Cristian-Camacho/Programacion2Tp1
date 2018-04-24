@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Holo Plataform Material
+  m_Name: Holo Plataform Material 1
   m_Shader: {fileID: 4800000, guid: 1fc4ce2958a06894581636007be5027e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
@@ -122,5 +122,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 1, g: 0.051470578, b: 0.07109517, a: 0}
     - _ColorBad: {r: 1, g: 0.102941155, b: 0.12165954, a: 0}
-    - _Colorgood: {r: 0.9100944, g: 0.3941393, b: 0.99264705, a: 0}
+    - _Colorgood: {r: 0.3941393, g: 0.99264705, b: 0.96788114, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
