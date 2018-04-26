@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GridFloor : MonoBehaviour
 {
-    private List<Floor> _availiavleFloors;
-    private List<Floor> _unAvailiavleFloors;
+    private List<Floor> _availiavleFloors = new List<Floor>();
+    private List<Floor> _unAvailiavleFloors = new List<Floor>();
 
     public static GridFloor instance;
 
