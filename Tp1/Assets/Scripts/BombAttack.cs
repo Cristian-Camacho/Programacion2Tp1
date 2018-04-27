@@ -2,31 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombAttack : MonoBehaviour
+public class BombAttack : Bullet
 {
     private float _timerAir;
     private float _timeImpact;
     private float _data;
-    private float _damage;
-    private Vector3 _targetImpact;
+    private Floor _targetImpact;
     private Vector3 _middlePoint;
     private Vector3 _originPos;
+    public float floorTimeToDie;
 
-
-    public void SetData(Vector3 origin, Vector3 target, float damage, float timeInAir)
+    public void SetData(Vector3 origin, Floor target, float damag, float timeInAir, Collider ignoreCollision)
     {
-        _damage = damage;
+        SetDamage(damag);
         _timeImpact = timeInAir;
 
         _targetImpact = target;
         _originPos = origin;
 
-        _middlePoint = new Vector3(target.x, origin.y, target.z);
+        _middlePoint = new Vector3(target.gameObject.transform.position.x, origin.y, target.gameObject.transform.position.z);
 
+        Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), ignoreCollision);
     }
 
-
     void Update()
+    {
+        Movement();
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        int amountN = 0;
+        List<Floor> floorsAlive = new List<Floor>();
+        foreach (var item in _targetImpact.neigthbors)
+        {
+            if (!item.MyCondicion()) return;
+            amountN++;
+            floorsAlive.Add(item);
+        }
+        int selected = Random.Range(0, amountN);
+        floorsAlive[selected].TakeHit(floorTimeToDie);
+    }
+
+    public override void Movement()
     {
         if (_targetImpact == null) return;
 
@@ -34,8 +53,8 @@ public class BombAttack : MonoBehaviour
         _timerAir += Time.deltaTime;
 
         var a = Vector3.Lerp(_originPos, _middlePoint, _data);
-        var b = Vector3.Lerp(_middlePoint, _targetImpact, _data);
+        var b = Vector3.Lerp(_middlePoint, _targetImpact.gameObject.transform.position, _data);
         transform.position = Vector3.Lerp(a, b, _data);
-
     }
+
 }

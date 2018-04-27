@@ -2,10 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    float speed;
-    float damage;
-    
-    public void Movement() { }
+    protected float damage;
+    public virtual void Movement() { }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        print("AAAAA");
+        var component = other.gameObject.GetComponent<IDamaged>();
+        if (component != null)
+        {
+            print("Dañe algo");
+            component.TakeHit(damage);
+            Destroy(this.gameObject);
+        }
+        else print("this is not posible damage");
+            
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        print("VVVVVVVV");
+    }
+
+    public void SetDamage(float dam)
+    {
+        damage = dam;
+    }
 }

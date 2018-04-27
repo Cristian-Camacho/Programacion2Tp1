@@ -6,8 +6,6 @@ public class Character : MonoBehaviour , IDamaged
 {
 	private float _maxLife;
 	public float currentLife;
-	public float speed;
-
 
 	void Start () 
 	{
