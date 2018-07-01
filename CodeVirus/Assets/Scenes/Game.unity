@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.44705883, g: 0.44705883, b: 0.44705883, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -605,7 +605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 386, y: 193}
+  m_AnchoredPosition: {x: 386, y: 180.32224}
   m_SizeDelta: {x: 252.74, y: 85.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56192245
@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 143421167}
   - component: {fileID: 143421166}
   m_Layer: 5
-  m_Name: Resume (1)
+  m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2739,7 +2739,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -382, y: -99}
+  m_AnchoredPosition: {x: -382, y: -89}
   m_SizeDelta: {x: 298.12, y: 100.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343895875
@@ -4675,7 +4675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -382, y: 103}
+  m_AnchoredPosition: {x: -382, y: 95}
   m_SizeDelta: {x: 252.74, y: 85.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686654917
@@ -5553,7 +5553,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 76d2ebfadb9394140ad2bd52b90cda46, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 959de2e1ada87564f9c254241f48e69c, type: 2}
+      objectReference: {fileID: 2100000, guid: 696de9c5002745b4898606911405010a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76d2ebfadb9394140ad2bd52b90cda46, type: 3}
   m_IsPrefabParent: 0
@@ -6456,7 +6456,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 384, y: -199}
+  m_AnchoredPosition: {x: 386, y: -179}
   m_SizeDelta: {x: 252.74, y: 85.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067427529
@@ -7631,7 +7631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -80}
+  m_AnchoredPosition: {x: 19.799988, y: -78.80226}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1249187888
@@ -8065,7 +8065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320487924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8456,7 +8456,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 76d2ebfadb9394140ad2bd52b90cda46, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 959de2e1ada87564f9c254241f48e69c, type: 2}
+      objectReference: {fileID: 2100000, guid: 696de9c5002745b4898606911405010a, type: 2}
     - target: {fileID: 2300000, guid: 76d2ebfadb9394140ad2bd52b90cda46, type: 3}
       propertyPath: m_DynamicOccludee
       value: 0
@@ -10371,7 +10371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -382.00003, y: -97.562744}
+  m_AnchoredPosition: {x: -382.00003, y: -86.52048}
   m_SizeDelta: {x: 252.74, y: 85.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1730861415
@@ -11169,7 +11169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -380, y: 102}
+  m_AnchoredPosition: {x: -380, y: 92}
   m_SizeDelta: {x: 298.12, y: 100.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847119921
@@ -11555,7 +11555,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 696de9c5002745b4898606911405010a, type: 2}
+  - {fileID: 2100000, guid: 4193d5b5e9d23a44e8afde35f06d6970, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

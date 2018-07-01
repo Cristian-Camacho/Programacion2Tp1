@@ -44,8 +44,9 @@ public class GameController : MonoBehaviour, IObservable
             else if (Input.GetKeyUp(KeyCode.Escape)) PauseGame();
         }else
         {
-            if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.Escape)) CloseConsole();
-         }
+            if (Input.GetKeyUp(KeyCode.LeftControl)) OpenConsole();
+            else if (Input.GetKeyUp(KeyCode.Escape)) CloseConsole();
+        }
 
 
 
