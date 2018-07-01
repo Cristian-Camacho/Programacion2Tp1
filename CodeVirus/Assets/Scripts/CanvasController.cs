@@ -60,8 +60,8 @@ public class CanvasController : MonoBehaviour, IObserver
                 break;
             case "gameover":
                 defeatMenu.SetActive(true);
-                /*if (SystemInfo.deviceType != DeviceType.Handheld)
-                    caseNoAds.SetActive(true);*/
+                if (SystemInfo.deviceType != DeviceType.Handheld)
+                    caseNoAds.SetActive(true);
                 break;
             case "revive":
                 defeatMenu.SetActive(false);
