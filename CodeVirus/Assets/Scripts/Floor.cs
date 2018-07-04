@@ -32,7 +32,7 @@ public class Floor : MonoBehaviour, IDamaged, IUpdateable
         var close = Physics.OverlapSphere(transform.position, radiusNeight, floorMask);
         foreach (var item in close)
         {
-            if (item.gameObject != this.gameObject)
+            if (item.gameObject != this.gameObject && item.GetComponent<Floor>() != null)
             {
                 neigthbors.Add(item.gameObject.GetComponent<Floor>());
             }

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: 783649eaa8f44ca4784a9de50ff72e34, type: 3}
-  - {fileID: 8300000, guid: ca9103dd677712e45a704592ada38729, type: 3}
+  - {fileID: 8300000, guid: fc375463ecc33584ebe73b1076aa552d, type: 3}
   - {fileID: 8300000, guid: 8234e4bcb94504f489197be13015c705, type: 3}
   - {fileID: 8300000, guid: 3b9a8c8b75616cf4a8e44a59e4d0e1ea, type: 3}
   - {fileID: 8300000, guid: a665154f709eb264fb7e1168545b1b40, type: 3}
@@ -68,4 +68,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 725191b862d2f7945a84422482fc2453, type: 3}
   - {fileID: 8300000, guid: ac4a94f8c9859b540bec235b7e1ab126, type: 3}
   - {fileID: 8300000, guid: 9430c13be2cd1b740b66654aa03fcd89, type: 3}
-  channelCount: 20
+  - {fileID: 8300000, guid: ffae2b8df76a75349981f89274101caf, type: 3}
+  - {fileID: 8300000, guid: c0477172557e7c14aa10df05679cfc18, type: 3}
+  channelCount: 30

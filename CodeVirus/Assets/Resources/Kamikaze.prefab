@@ -210,6 +210,8 @@ MonoBehaviour:
     type: 2}
   dropChance: 82.6
   drop: {fileID: 114971268171429576, guid: 9909579e13d06544ab5ab53bde61fa40, type: 2}
+  feedbackDead: {fileID: 1051788594560550, guid: b727c66d91d38ca46a585f6ef9aa44ee,
+    type: 2}
   speed: 1
   damage: 10
   explosionRadius: 3

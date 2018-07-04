@@ -6739,6 +6739,7 @@ MonoBehaviour:
   moveStick: {fileID: 851143280}
   aimStick: {fileID: 427126875}
   caseNoAds: {fileID: 1320487923}
+  adButton: {fileID: 1504887681}
 --- !u!1 &1085018582 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 594cb4407d9360d4485c22ddf0e5c220, type: 3}
@@ -8065,7 +8066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1320487924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11632,6 +11633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf62d0494d9801947980213b828fe92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLife: 0
+  dieFeedback: {fileID: 1148697811906830, guid: 296789c4fcadb8944a011b048a3d6d50,
+    type: 2}
   totalLife: 1000
   attackSpeed: 5
   powerDamage: 10

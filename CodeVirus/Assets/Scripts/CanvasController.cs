@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ public class CanvasController : MonoBehaviour, IObserver
     public Stick moveStick;
     public Stick aimStick;
     public GameObject caseNoAds;
+    public Button adButton;
+    private Dictionary<string, Action> _actions;
 
     private void Awake()
     {
@@ -35,48 +38,62 @@ public class CanvasController : MonoBehaviour, IObserver
         if (SystemInfo.deviceType == DeviceType.Handheld)
             mobileInput.SetActive(true);
         else
+        {
+            adButton.enabled = false;
             mobileInput.SetActive(false);
-         
+            caseNoAds.SetActive(true);
+        }
+
+        CreateDictionary();
+    }
+
+    private void CreateDictionary()
+    {
+        _actions = new Dictionary<string, Action>();
+
+        _actions.Add("pause", PauseGame);
+        _actions.Add("resume", ResumeGame);
+        _actions.Add("close-console", CloseConsole);
+        _actions.Add("console", OpenConsole);
+        _actions.Add("gameover", EndGame);
+        _actions.Add("revive", EndGame);
+        _actions.Add("bossHit", UpdateBoss);
+        _actions.Add("playerLifeMod", UpdatePlayer);
+        _actions.Add("Double", DoubleFeedback);
     }
     
 
     public void Notify(string action)
     {
-        switch (action)
-        {
-            case "pause":
-                pauseMenu.SetActive(true);
-                SoundManager.instance.PlaySound(SoundsIDs.ID_PAUSE_ON);
-                break;
-            case "console":
-                console.SetActive(true);
-                break;
-            case "close-console":
-                console.SetActive(false);
-                break;
-            case "resume":
-                SoundManager.instance.PlaySound(SoundsIDs.ID_PAUSE_OFF);
-                pauseMenu.SetActive(false);
-                break;
-            case "gameover":
-                defeatMenu.SetActive(true);
-                if (SystemInfo.deviceType != DeviceType.Handheld)
-                    caseNoAds.SetActive(true);
-                break;
-            case "revive":
-                defeatMenu.SetActive(false);
-                break;
-            case "bossHit":
-                UpdateBoss();
-                break;
-            case "playerLifeMod":
-                UpdatePlayer();
-                break;
-            case "Double":
-                DoubleFeedback();
-                break;
-                
-        }
+        if (_actions.ContainsKey(action))
+            _actions[action]();
+    }
+
+    void PauseGame()
+    {
+        pauseMenu.SetActive(true);
+        SoundManager.instance.PlaySound(SoundsIDs.ID_PAUSE_ON);
+    }
+
+    void ResumeGame()
+    {
+        SoundManager.instance.PlaySound(SoundsIDs.ID_PAUSE_OFF);
+        pauseMenu.SetActive(false);
+    }
+
+    void OpenConsole()
+    {
+        console.SetActive(true);
+    }
+
+    void CloseConsole()
+    {
+        console.SetActive(false);
+    }
+
+    void EndGame()
+    {
+        defeatMenu.SetActive(!defeatMenu.activeSelf);
     }
 
     public void DoubleFeedback()

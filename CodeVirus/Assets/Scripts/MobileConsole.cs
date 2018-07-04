@@ -11,7 +11,6 @@ public class MobileConsole : MonoBehaviour
     {
         if (SystemInfo.deviceType != DeviceType.Handheld)
         {
-            Debug.Log("Destroy Console");
             Destroy(this);
         }
 

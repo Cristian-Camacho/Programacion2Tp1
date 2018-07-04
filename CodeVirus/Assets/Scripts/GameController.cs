@@ -14,8 +14,9 @@ public class GameController : MonoBehaviour, IObservable
     private Player _hero;
     private int fase = 1;
     public AudioSource mainSound;
-    private bool paused = false;
-    private bool autoShoot = false;
+    private bool _paused = false;
+    private bool _autoShoot = false;
+    private bool _consoleActive = false;
 
     // Use this for initialization
     void Awake()
@@ -38,19 +39,32 @@ public class GameController : MonoBehaviour, IObservable
 
     void Update()
     {
-        if (!paused)
+        if (!_paused)
         {
             if (Input.GetKeyUp(KeyCode.LeftControl)) OpenConsole();
             else if (Input.GetKeyUp(KeyCode.Escape)) PauseGame();
         }else
         {
-            if (Input.GetKeyUp(KeyCode.LeftControl)) OpenConsole();
-            else if (Input.GetKeyUp(KeyCode.Escape)) CloseConsole();
+            if (!_consoleActive)
+            {
+                if (Input.GetKeyUp(KeyCode.LeftControl))
+                {
+                    OpenConsole();
+                }
+            }else if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                CloseConsole();
+            }
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                CloseConsole();
+                ResumeGame();
+            }
         }
 
 
 
-        if (!paused && _updateables.Count > 0)
+        if (!_paused && _updateables.Count > 0)
         {
             foreach (var upts in _updateables)
             {
@@ -71,8 +85,9 @@ public class GameController : MonoBehaviour, IObservable
         {
             obs.Notify("console");
         }
-        
-         PauseGame();
+
+        _consoleActive = true;
+        PauseGame();
     }
 
     public void CloseConsole()
@@ -82,7 +97,8 @@ public class GameController : MonoBehaviour, IObservable
             obs.Notify("close-console");
         }
 
-        ResumeGame();
+        _consoleActive = false;
+
     }
 
     public void PauseGame()
@@ -91,7 +107,7 @@ public class GameController : MonoBehaviour, IObservable
         {
             obs.Notify("pause");
         }
-            paused = true;
+            _paused = true;
     }
 
     public void ResumeGame()
@@ -100,7 +116,7 @@ public class GameController : MonoBehaviour, IObservable
         {
             obs.Notify("resume");
         }
-            paused = false;
+            _paused = false;
     }
 
     public void AddUpdateble(IUpdateable me)
@@ -136,12 +152,12 @@ public class GameController : MonoBehaviour, IObservable
 
     public void AutoShoot(bool active)
     {
-        autoShoot = active;
+        _autoShoot = active;
     }
 
     public bool CanAutoShoot()
     {
-        return autoShoot;
+        return _autoShoot;
     }
 
     public void ActivateFase2()
@@ -180,7 +196,7 @@ public class GameController : MonoBehaviour, IObservable
 
     public void Defeat()
     {
-        paused = true;
+        _paused = true;
         foreach (var item in _observers)
         {
             item.Notify("gameover");
@@ -207,7 +223,7 @@ public class GameController : MonoBehaviour, IObservable
             Destroy(bullets[j].gameObject);
         }
 
-        paused = false;
+        _paused = false;
         _hero.GetComponent<Rigidbody>().useGravity = false;
         _hero.Revive();
         _hero.MyWeapon().PowerUpWeapon(10f);

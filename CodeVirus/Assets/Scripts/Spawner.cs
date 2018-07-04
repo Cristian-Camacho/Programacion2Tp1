@@ -36,15 +36,17 @@ public class Spawner : MonoBehaviour, IUpdateable
     {
         currentTime = 0f;
         var tempFloor = GridFloor.instance.CloseToTransform(GameController.instance.MyHero().transform);
+        
         var spawnTrans = DropPos(tempFloor);
-        if(spawnTrans != null)
+
+        if (spawnTrans != null)
            Instantiate(_tipe1, new Vector3(spawnTrans.position.x, transform.position.y, spawnTrans.position.z), Quaternion.identity);
     }
 
     private Transform DropPos(Floor f)
     {
-        int firstN = Random.Range(0, f.neigthbors.Count);
-        var SecondN = f.neigthbors[firstN].neigthbors[Random.Range(0, f.neigthbors[firstN].neigthbors.Count)];
+        int firstN = Random.Range(0, f.neigthbors.Count -1);
+        var SecondN = f.neigthbors[firstN].neigthbors[Random.Range(0, f.neigthbors[firstN].neigthbors.Count -1)];
 
         if (SecondN.ImNotAvaiable())
         {

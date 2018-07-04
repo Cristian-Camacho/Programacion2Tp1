@@ -136,6 +136,7 @@ public class SoundsIDs : MonoBehaviour
     public const int ID_FASE_2 = 14;
     public const int ID_FASE_3 = 15;
 
-
+    public const int ID_MAINBOSS_HIT = 16;
+    public const int ID_MINION_HIT = 17;
 }
 

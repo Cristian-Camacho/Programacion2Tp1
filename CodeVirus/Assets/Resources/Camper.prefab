@@ -188,6 +188,8 @@ MonoBehaviour:
     type: 2}
   dropChance: 75.1
   drop: {fileID: 114971268171429576, guid: 9909579e13d06544ab5ab53bde61fa40, type: 2}
+  feedbackDead: {fileID: 1051788594560550, guid: b727c66d91d38ca46a585f6ef9aa44ee,
+    type: 2}
   damage: 5
   timerShoot: 3
   bulle: {fileID: 114638366459927808, guid: b948c95a82c66b14dac164a34d5c0216, type: 2}

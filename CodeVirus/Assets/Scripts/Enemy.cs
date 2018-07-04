@@ -8,6 +8,7 @@ public class Enemy : Character
     public float dropChance;
 
     public DropBooster drop;
+    public GameObject feedbackDead;
 
     public override void Die()
     {
@@ -23,11 +24,24 @@ public class Enemy : Character
         RemoveMe();
         Destroy(this.gameObject);
     }
+    public override void TakeHit(float amount)
+    {
+        FeedbackHit();
+        base.TakeHit(amount);
+    }
 
     protected override void Feedback()
     {
         base.Feedback();
         SoundManager.instance.PlaySound(SoundsIDs.ID_ENEMY1_DESTROY);
+    }
+
+    protected void FeedbackHit()
+    {
+        var feed = Instantiate(feedbackDead, transform.position, Quaternion.identity);
+        Destroy(feed, 1f);
+        SoundManager.instance.PlaySound(SoundsIDs.ID_MINION_HIT);
+
     }
 
     public override void UpdateMe() { }

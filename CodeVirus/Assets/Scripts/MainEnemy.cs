@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainEnemy : MonoBehaviour, IDamaged, IUpdateable, IObservable
+public class MainEnemy : Character, IObservable
 {
     public float totalLife;
     public float attackSpeed;
     public float powerDamage;
     public float timerDestroyFloor;
     private float _timerAttack = 0f;
-    private float _currentLife;
     private Player _mainCharacter;
     public Transform attackPoint;
     private BombAttack _attackSphere;
     private GameObject _feedbackTarget;
     private List<IObserver> _observers;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    protected override void Start()
     {
-        _currentLife = totalLife;
+        currentLife = totalLife;
         _mainCharacter = FindObjectOfType<Player>();
         _attackSphere = Resources.Load("BombAttack", typeof(BombAttack)) as BombAttack;
         _feedbackTarget = Resources.Load("TargetedHexagon", typeof(GameObject)) as GameObject;
@@ -28,9 +27,9 @@ public class MainEnemy : MonoBehaviour, IDamaged, IUpdateable, IObservable
         GameController.instance.AddUpdateble(this);
         Subscribe(CanvasController.instance);
     }
-     
 
-    public void UpdateMe()
+
+    public override void UpdateMe()
     {
         if (_timerAttack > 0f)
             _timerAttack -= Time.deltaTime;
@@ -43,7 +42,7 @@ public class MainEnemy : MonoBehaviour, IDamaged, IUpdateable, IObservable
 
     public float CurrentLife()
     {
-        return _currentLife;
+        return currentLife;
     }
     
 
@@ -58,18 +57,19 @@ public class MainEnemy : MonoBehaviour, IDamaged, IUpdateable, IObservable
         Destroy(feedback, timerDestroyFloor);
     }
 
-    public void TakeHit(float amount)
+    public override void TakeHit(float amount)
     {
-        _currentLife -= amount / (2.5f * GameController.instance.CurrentFase());
+        currentLife -= amount / (2.5f * GameController.instance.CurrentFase());
+        Feedback();
         SoundManager.instance.PlaySound(SoundsIDs.ID_ENEMY2_DESTROY);
         foreach (var obs in _observers)
         {
             obs.Notify("bossHit");
         }
-        if (_currentLife < 0f) Die();
+        if (currentLife < 0f) Die();
     }
 
-    public void Die()
+    public override void Die()
     {
         GameController.instance.RemoveUpdateable(this);
         GameController.instance.Victory();
